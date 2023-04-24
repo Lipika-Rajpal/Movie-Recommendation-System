@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Movie List</title>
+    <style>
+		body {
+            background-color: #1b1b1b;
+            color: #fff;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+            color: #fff;
+            margin-top: 8%;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 50px auto;
+            max-width: 600px;
+            background-color: #212121;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        li {
+            padding: 10px;
+            border-bottom: 1px solid #fff;
+        }
+
+        li:last-child {
+            border-bottom: none;
+        }
+
+	</style>
+</head>
+<body>
+	<h1>Recommended Movies</h1>
+	<ul>
+		{% for movie in movie_list %}
+			<li>{{ movie }}</li>
+		{% endfor %}
+	</ul>
+</body>
+</html>

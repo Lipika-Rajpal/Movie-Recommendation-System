@@ -10,6 +10,10 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
+import warnings
+
+# ignore all future warnings
+warnings.simplefilter(action='ignore', category=FutureWarning)
 
 class Recommender_new_user:
     def __init__(self, movies, ratings, users):
@@ -169,9 +173,12 @@ class Evaluator:
     
 
 def get_movies(user_id, movie_name, isNew):
-    movies = pd.read_csv('.\Dataset\movies.csv',sep=';',encoding='latin-1').drop('Unnamed: 3',axis=1)
-    ratings = pd.read_csv('.\Dataset\\ratings.csv',sep=';')
-    users = pd.read_csv('.\Dataset\\users.csv',sep=';') 
+    movies = pd.read_csv('.\our_dataset\movies.csv',sep=';',encoding='latin-1').drop('Unnamed: 3',axis=1)
+    ratings = pd.read_csv('.\our_dataset\\ratings.csv',sep=';')
+    users = pd.read_csv('.\our_dataset\\users.csv',sep=';') 
+
+    if user_id in users['userId'].values:
+        isNew = False
 
     # Running all the models
     if isNew:
@@ -204,9 +211,11 @@ def get_movies(user_id, movie_name, isNew):
 
         evaluator = Evaluator(data_movies)
         evaluator.fit()
-        print(evaluator.recommend_on_movie(movie_name))
+        ans = evaluator.recommend_on_movie(movie_name)
+        print(ans)
+        return ans
 
-get_movies(1, 'Toy Story (1995)', False)
+# get_movies(1, 'Waiting to Exhale (1995)', True)
 
 
 
