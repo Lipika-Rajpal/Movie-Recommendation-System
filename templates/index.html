@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Welcome</title>
     <!-- <link rel="stylesheet" href="styles.css"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
@@ -56,20 +56,6 @@
             width: 100%;
         }
 
-        input[type="text"] {
-            width: 100%;
-            padding: 10px;
-            /* margin: 10px 0; */
-            border: none;
-            border-radius: 4px;
-            background-color: #282828;
-            color: #fff;
-            font-size: 1rem;
-            outline: none;
-            margin-top: 20px;
-            margin-bottom: 10px;
-        }
-
         input[type="submit"] {
             background-color: #4CAF50;
             color: #fff;
@@ -91,37 +77,20 @@
             outline: none;
         }
 
-        input[type="text"]::placeholder {
-            color: #aaa;
-        }
-
-        input[type="text"]:focus {
-            outline: none;
-            box-shadow: 0 0 2px #4CAF50;
-        }
-
-        .fas {
-            margin-right: 10px;
-            margin-top: 20px;
-            margin-bottom: 10px;
-        }
-
     </style>
 
 
 </head>
 <body>
-    <h1 class="title">Movie Recommendation System</h1>
+    <h1 class="title">Welcome</h1>
     <div class="container">
         
-        <form action="/send_data" method="POST">
-            <label for="movie_name"><i class="fas fa-film"></i>Enter Movie Name:</label>
-            <input type="text" name="movie_name" id="movie_name" placeholder="e.g. The Shawshank Redemption">
-            <label for="uid"><i class="fas fa-user"></i>Enter User ID:</label>
-            <input type="text" name="uid" id="uid" placeholder="e.g. 12345">
+        <form action="/registered_user" method="POST">
+            <input type="submit" value="Registered User">
+        </form>
 
-            <input type="submit" value="Recommend">
-
+        <form action="/new_user" method="POST">
+            <input type="submit" value="New User">
         </form>
     </div>
 </body>

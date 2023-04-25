@@ -177,15 +177,12 @@ def get_movies(user_id, movie_name, isNew):
     ratings = pd.read_csv('.\our_dataset\\ratings.csv',sep=';')
     users = pd.read_csv('.\our_dataset\\users.csv',sep=';') 
 
-    if user_id in users['userId'].values:
-        isNew = False
-
     # Running all the models
     if isNew:
         new_user = Recommender_new_user(movies, ratings, users) 
         new_user.fit() 
         set1 = new_user.recommend_movies(user_id)
-        # print(set1) 
+        return set1
     
     else:
         mf = MatrixFactorization(users.shape[0], movies.shape[0], 5) 
@@ -215,7 +212,35 @@ def get_movies(user_id, movie_name, isNew):
         print(ans)
         return ans
 
-# get_movies(1, 'Waiting to Exhale (1995)', True)
+def add_user(name, age, gender, occupation, zip_code):
+    users = pd.read_csv('./our_dataset/users.csv', sep=';')
+    user_id = users.shape[0] + 1
+    new_user = pd.DataFrame([[user_id, gender, age, occupation, zip_code]], columns=['userId', 'gender', 'age', 'occupation', 'zip-code'])
+    users = pd.concat([users, new_user], ignore_index=True)
+    users.to_csv('./our_dataset/users.csv', sep=';', index=False)
+    return user_id
 
+import random
+
+
+def add_rating(uid, movie_names):
+    ratings = pd.read_csv('./our_dataset/ratings.csv', sep=';')
+    movies = pd.read_csv('./our_dataset/movies.csv', sep=';', encoding='latin-1').drop('Unnamed: 3', axis=1)
+    movie_ids = []
+    for movie_name in movie_names:
+        u = movies[movies['title'] == movie_name]
+        j = movies[movies['title'] == movie_name]['movieId']
+        movie_ids.append(j.iloc[0])
+    # print(movie_ids)
+    for mid in movie_ids:
+        rating = random.randint(1, 5)
+        time = random.randint(1, 1000000000)
+        new_rating = pd.DataFrame([[uid, mid, rating, time]], columns=['userId', 'movieId', 'rating', 'timestamp'])
+        ratings = pd.concat([ratings, new_rating], ignore_index=True)
+        ratings.to_csv('./our_dataset/ratings.csv', sep=';', index=False)
+
+# add_user('asa', 20, 'M', 'student', '12345')
+# get_movies(1, 'Waiting to Exhale (1995)', True)
+# add_rating(6041, ['Waiting to Exhale (1995)', 'Toy Story (1995)'])
 
 
