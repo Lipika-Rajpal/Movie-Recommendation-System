@@ -35,6 +35,22 @@
             border-bottom: none;
         }
 
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.2s ease;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
 	</style>
 </head>
 <body>
@@ -44,5 +60,8 @@
 			<li>{{ movie }}</li>
 		{% endfor %}
 	</ul>
+    <form action="/feed" method="POST">
+        <center><input type="submit" value="Feedback"></center>
+    </form>
 </body>
 </html>

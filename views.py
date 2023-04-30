@@ -34,4 +34,9 @@ def get_data_from_html():
         a = get_movies(int(uid), movie_name, False)
         print(type(a))
         return render_template('display.html', movie_list=a)
+
+
+@views.route('/feed', methods = ['GET', 'POST'])
+def get_data():
+        return render_template('feedback.html')
         
