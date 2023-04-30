@@ -19,3 +19,8 @@ Some of the movie names you can enter as input:
 - 'Toy Story (1995)' 
 - 'Sudden Death (1995)' 
 - 'Nixon (1995)'
+
+# References 
+
+- https://www.kaggle.com/code/sachinsarkar/movielens-movie-recommendation-system 
+- https://nipunbatra.github.io/ml2023/notebooks/posts/movie-recommendation-knn-mf.html 
